@@ -1,11 +1,11 @@
 SELECT 
-    c.first_name + ' ' + c.last_name AS customer_name,  -- Use '+' for concatenation in SQL Server
+    c.first_name + ' ' + c.last_name AS customer_name,
     COUNT(s.order_id) AS total_transactions,
     RANK() OVER (ORDER BY COUNT(s.order_id) DESC) AS rank
 FROM
-    orders s
+    [Bike_Store_Relation].[dbo].[orders] s  -- Corrected table alias
 INNER JOIN
-    customers c 
+    [Bike_Store_Relation].[dbo].[customers] c 
 ON 
     s.customer_id = c.customer_id
 GROUP BY
